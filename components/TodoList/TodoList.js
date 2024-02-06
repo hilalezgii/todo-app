@@ -1,11 +1,11 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { styles } from "./TodoList.styles";
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, complatedTodo }) => {
     const renderItem = ({ item }) => (
-        <View style={styles.container}>
-            <Text style={styles.text}>{item.title}</Text>
-        </View>
+        <TouchableOpacity onPress={() => complatedTodo(item.id)} style={item.complated ? styles.complated : styles.container}>
+            <Text style={item.complated ? styles.complatedText : styles.text}>{item.title}</Text>
+        </TouchableOpacity>
     );
     const keyExtractor = (item) => item.id;
     return (

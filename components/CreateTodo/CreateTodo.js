@@ -5,6 +5,7 @@ import { useState } from "react";
 const CreateTodo = ({createTodo}) => {
     const [text,setText] = useState('');
     const onCreateTodo = () => {
+        if (text.length<=0) return ;
         createTodo(text)
         setText('')
     };
